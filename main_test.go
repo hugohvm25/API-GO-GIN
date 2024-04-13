@@ -13,12 +13,14 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	"testing"
 
 	"github.com/gin-gonic/gin"
 	"github.com/hugohvm25/API-GO-GIN/controllers"
+	"github.com/stretchr/testify/assert"
 )
 
 func SetupRotasTeste() *gin.Engine {
@@ -38,10 +40,21 @@ func TestVerificaçãoDaSaudacaoComParametro(t *testing.T) {
 	resposta := httptest.NewRecorder()
 	//requisição parâmetros(onde guardar a resposta da requisição, qual tipo de requisição)
 	r.ServeHTTP(resposta, req)
-	if resposta.Code != http.StatusOK {
-		t.Fatalf("Status error: valor recebido foi %d e o esperado era %d", resposta.Code, http.StatusOK)
-	} else {
-		fmt.Println("Passou no teste")
-	}
+	//a partir do testify, usar o assert para facilitar e encurtar o código deixando mais limpo
+	assert.Equal(t, http.StatusOK, resposta.Code, "Os retornos deveriam ser iguais!")
+	//retorno com a informação para verificação
+	mockDaResposta := `{"API diz:":"E ai hugo, tudo beleza?"}`
+	//retorno com a leitura da resposta
+	respostaBody, _ := ioutil.ReadAll(resposta.Body)
+	//convertendo para string para que ele não retorne a resposta em bites
+	assert.Equal(t, mockDaResposta, string(respostaBody))
+	fmt.Println("Mensagem esperada:", mockDaResposta)
+	fmt.Println("Mensagem apresentada:", string(respostaBody))
+
+	// if resposta.Code != http.StatusOK {
+	// 	t.Fatalf("Status error: valor recebido foi %d e o esperado era %d", resposta.Code, http.StatusOK)
+	// } else {
+	// 	fmt.Println("Passou no teste")
+	// }
 
 }
