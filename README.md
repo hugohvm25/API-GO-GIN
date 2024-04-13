@@ -20,4 +20,9 @@ https://pkg.go.dev/gopkg.in/validator.v2
 
 executar o comando: go get gopkg.in/validator.v2
 
+=== criando arquivos de testes ===
 
+go test
+
+a função de teste do GO deve sempre ter a palavra Test com T maiúsculo na primeira letra
+func TestNome_do_teste(t *testing.T)

@@ -24,9 +24,9 @@ import (
 type Aluno struct {
 	gorm.Model
 
-	Nome string `json:"nome" validate:"nonzero, regexp=^[a-zA-Z]*$` // não pode ser 0 e deve ter somente letras
-	RG   string `json:"rg" validate:"len=9, regexp=^[0-9]*$"`       // deve ter um tamanho especifico e restrição somente para números
-	CPF  string `json:"cpf" validate:"len=11, regexp=^[0-9]*$`      // deve ter um tamanho especifico e restrição somente para números
+	Nome string `json:"nome" validate:"nonzero, regexp=^[a-zA-Z]*$"` // não pode ser 0 e deve ter somente letras
+	RG   string `json:"rg" validate:"len=9, regexp=^[0-9]*$"`        // deve ter um tamanho especifico e restrição somente para números
+	CPF  string `json:"cpf" validate:"len=11, regexp=^[0-9]*$"`      // deve ter um tamanho especifico e restrição somente para números
 
 }
 
