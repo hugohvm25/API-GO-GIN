@@ -19,3 +19,5 @@ ocker-compose up
 https://pkg.go.dev/gopkg.in/validator.v2
 
 executar o comando: go get gopkg.in/validator.v2
+
+
