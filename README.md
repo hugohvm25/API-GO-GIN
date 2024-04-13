@@ -26,3 +26,7 @@ go test
 
 a função de teste do GO deve sempre ter a palavra Test com T maiúsculo na primeira letra
 func TestNome_do_teste(t *testing.T)
+
+
+biblioteca para instalação que possui alguns tipos de parametros já pré definidos
+go get github.com/stretchr/testify 
