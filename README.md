@@ -11,7 +11,7 @@ Exemplo:
 Para rodar o projeto corretamente com o docker e não ter incompatibilidade da versão do BD, excluir a pasta postgres-data e executar os códigos:
 
 docker-compose build
-ocker-compose up 
+docker-compose up 
 
 
 === instalando o pacote Validador ===

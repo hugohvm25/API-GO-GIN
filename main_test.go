@@ -42,7 +42,7 @@ func TestVerificaçãoDaSaudacaoComParametro(t *testing.T) {
 	r.ServeHTTP(resposta, req)
 	//a partir do testify, usar o assert para facilitar e encurtar o código deixando mais limpo
 	assert.Equal(t, http.StatusOK, resposta.Code, "Os retornos deveriam ser iguais!")
-	//retorno com a informação para verificação
+	//retorno com a informação para verificação - fazer encapsulamento do testo com crase ``
 	mockDaResposta := `{"API diz:":"E ai hugo, tudo beleza?"}`
 	//retorno com a leitura da resposta
 	respostaBody, _ := ioutil.ReadAll(resposta.Body)
