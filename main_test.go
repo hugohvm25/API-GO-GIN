@@ -20,6 +20,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/hugohvm25/API-GO-GIN/controllers"
+	"github.com/hugohvm25/API-GO-GIN/database"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -56,5 +57,21 @@ func TestVerificaçãoDaSaudacaoComParametro(t *testing.T) {
 	// } else {
 	// 	fmt.Println("Passou no teste")
 	// }
-
+}
+func TestListandoTodosAlunosHandler(t *testing.T) {
+	//conexão com o banco de dados da aplicação
+	database.ConectaComBancoDeDados()
+	//cria a rota de teste
+	r := SetupRotasTeste()
+	//busca o caminho da requisição para realizar o teste
+	r.GET("/alunos", controllers.ExibeTodosAlunos)
+	//requisição = metodo da requisição, caminho (path) a ser utilizado, e mensagem (conteúdo de retorno)
+	req, _ := http.NewRequest("GET", "/alunos", nil)
+	//para armazenar o retorno da resposta
+	resposta := httptest.NewRecorder()
+	//requisição
+	r.ServeHTTP(resposta, req)
+	assert.Equal(t, http.StatusOK, resposta.Code)
+	//print para confirmar se está buscando a informação correta no banco de dados
+	//fmt.Println(resposta.Body)
 }
