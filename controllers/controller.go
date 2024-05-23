@@ -103,5 +103,9 @@ func ExibePaginaIndex(c *gin.Context) {
 	c.HTML(http.StatusOK, "index.html", gin.H{
 		"alunos": alunos,
 	})
+}
 
+// personalizando a página não encontrada padrão do GIN
+func RotaNaoEncontrada(c *gin.Context) {
+	c.HTML(http.StatusNotFound, "404.html", nil)
 }

@@ -20,5 +20,7 @@ func HandleRequests() {
 	r.GET("/alunos/cpf/:cpf", controllers.BuscaAlunoPorCPF)
 	//rota de exibição da pagina html
 	r.GET("/index", controllers.ExibePaginaIndex)
+	//configuração para rotas não encontradas
+	r.NoRoute(controllers.RotaNaoEncontrada)
 	r.Run()
 }
